@@ -37,6 +37,7 @@ def download(url, target, expected_hash):
         except OSError:
             pass
 
+    os.remove(target)
     os.rename(TEMP_FILE, target)
 
 def download_list(items, message_dialog):
