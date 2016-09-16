@@ -35,8 +35,11 @@ def download(url, target, expected_hash):
         except OSError:
             pass
 
-    # If we don't remove it first we get errors
-    os.remove(target)
+    # If it already exists the rename will fail
+    try:
+        os.remove(target)
+    except OSError:
+        pass
     os.rename(TEMP_FILE, target)
 
 def download_list(items, message_dialog):
